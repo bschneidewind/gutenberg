@@ -18,6 +18,7 @@ import SwapTemplateButton from './swap-template-button';
 import ResetDefaultTemplate from './reset-default-template';
 import { unlock } from '../../lock-unlock';
 import CreateNewTemplate from './create-new-template';
+import PostPanelRowButton from '../post-panel-row-button';
 
 const POPOVER_PROPS = {
 	className: 'editor-post-template__dropdown',
@@ -94,13 +95,12 @@ export default function BlockThemeControl( { id } ) {
 			popoverProps={ POPOVER_PROPS }
 			focusOnMount
 			toggleProps={ {
-				size: 'compact',
-				variant: 'tertiary',
-				tooltipPosition: 'middle left',
+				as: PostPanelRowButton,
+				displayedValue: decodeEntities( template.title ),
 			} }
-			label={ __( 'Template options' ) }
-			text={ decodeEntities( template.title ) }
+			label={ __( 'Template' ) }
 			icon={ null }
+			className="editor-post-template__panel-dropdown"
 		>
 			{ ( { onClose } ) => (
 				<>

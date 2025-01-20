@@ -16,6 +16,7 @@ import { store as noticesStore } from '@wordpress/notices';
 import { store as editorStore } from '../../store';
 import CreateNewTemplateModal from './create-new-template-modal';
 import { useAllowSwitchingTemplates } from './hooks';
+import PostPanelRowButton from '../post-panel-row-button';
 
 const POPOVER_PROPS = {
 	className: 'editor-post-template__dropdown',
@@ -45,15 +46,13 @@ function PostTemplateToggle( { isOpen, onClick } ) {
 	}, [] );
 
 	return (
-		<Button
-			__next40pxDefaultSize
-			variant="tertiary"
-			aria-expanded={ isOpen }
-			aria-label={ __( 'Template options' ) }
+		<PostPanelRowButton
+			label={ __( 'Template' ) }
+			displayedValue={ templateTitle ?? __( 'Default template' ) }
+			isExpanded={ isOpen }
 			onClick={ onClick }
-		>
-			{ templateTitle ?? __( 'Default template' ) }
-		</Button>
+			aria-haspopup="true"
+		/>
 	);
 }
 
@@ -226,6 +225,7 @@ function ClassicThemeControl() {
 			renderContent={ ( { onClose } ) => (
 				<PostTemplateDropdownContent onClose={ onClose } />
 			) }
+			className="editor-post-template__panel-dropdown"
 		/>
 	);
 }

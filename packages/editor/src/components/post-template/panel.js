@@ -2,7 +2,6 @@
  * WordPress dependencies
  */
 import { useSelect } from '@wordpress/data';
-import { __ } from '@wordpress/i18n';
 import { store as coreStore } from '@wordpress/core-data';
 
 /**
@@ -66,7 +65,7 @@ export default function PostTemplatePanel() {
 
 	if ( ( ! isBlockTheme || ! canViewTemplates ) && isVisible ) {
 		return (
-			<PostPanelRow label={ __( 'Template' ) }>
+			<PostPanelRow>
 				<ClassicThemeControl />
 			</PostPanelRow>
 		);
@@ -74,7 +73,7 @@ export default function PostTemplatePanel() {
 
 	if ( isBlockTheme && !! templateId ) {
 		return (
-			<PostPanelRow label={ __( 'Template' ) }>
+			<PostPanelRow>
 				<BlockThemeControl id={ templateId } />
 			</PostPanelRow>
 		);
