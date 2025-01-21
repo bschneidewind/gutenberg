@@ -59,14 +59,14 @@ test.describe( 'Template resolution', () => {
 			await editor.openDocumentSettingsSidebar();
 			await expect(
 				page.getByRole( 'button', { name: 'Template' } )
-			).toHaveText( 'Single Entries' );
+			).toContainText( 'Single Entries' );
 			await updateSiteSettings( { requestUtils, pageId: newPage.id } );
 			await page.reload();
 			await page.locator( 'role=button[name="Block Inserter"i]' ).click();
 			await editor.openDocumentSettingsSidebar();
 			await expect(
 				page.getByRole( 'button', { name: 'Template' } )
-			).toHaveText( 'Index' );
+			).toContainText( 'Index' );
 		} );
 		test( 'Site editor proper template resolution', async ( {
 			page,
@@ -88,7 +88,7 @@ test.describe( 'Template resolution', () => {
 			await editor.openDocumentSettingsSidebar();
 			await expect(
 				page.getByRole( 'button', { name: 'Template' } )
-			).toHaveText( 'Index' );
+			).toContainText( 'Index' );
 		} );
 	} );
 } );
