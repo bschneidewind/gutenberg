@@ -107,7 +107,7 @@ test.describe( 'Pages', () => {
 		} );
 		await editorSettings.getByRole( 'tab', { name: 'Page' } ).click();
 		await editorSettings
-			.getByRole( 'button', { name: 'Template options' } )
+			.getByRole( 'button', { name: 'Template' } )
 			.click();
 		await page.getByRole( 'menuitem', { name: 'Edit template' } ).click();
 		await expect(
@@ -185,10 +185,10 @@ test.describe( 'Pages', () => {
 		// Toggle template preview to "off".
 		const templateOptionsButton = page
 			.getByRole( 'region', { name: 'Editor settings' } )
-			.getByRole( 'button', { name: 'Template options' } );
+			.getByRole( 'button', { name: 'Template' } );
 		await templateOptionsButton.click();
 		const templatePreviewButton = page
-			.getByRole( 'menu', { name: 'Template options' } )
+			.getByRole( 'menu', { name: 'Template' } )
 			.getByRole( 'menuitemcheckbox', { name: 'Show template' } );
 
 		await expect( templatePreviewButton ).toHaveAttribute(
@@ -276,11 +276,11 @@ test.describe( 'Pages', () => {
 		await editor.openDocumentSettingsSidebar();
 		const templateOptionsButton = page
 			.getByRole( 'region', { name: 'Editor settings' } )
-			.getByRole( 'button', { name: 'Template options' } );
+			.getByRole( 'button', { name: 'Template' } );
 		await expect( templateOptionsButton ).toHaveText( 'Single Entries' );
 		await templateOptionsButton.click();
 		await page
-			.getByRole( 'menu', { name: 'Template options' } )
+			.getByRole( 'menu', { name: 'Template' } )
 			.getByText( 'Change template' )
 			.click();
 		const templateItem = page.locator(
@@ -298,7 +298,7 @@ test.describe( 'Pages', () => {
 		await editor.openDocumentSettingsSidebar();
 		await templateOptionsButton.click();
 		const resetButton = page
-			.getByRole( 'menu', { name: 'Template options' } )
+			.getByRole( 'menu', { name: 'Template' } )
 			.getByText( 'Use default template' );
 		await expect( resetButton ).toBeVisible();
 		await resetButton.click();
@@ -314,13 +314,13 @@ test.describe( 'Pages', () => {
 		await editor.openDocumentSettingsSidebar();
 		const templateOptionsButton = page
 			.getByRole( 'region', { name: 'Editor settings' } )
-			.getByRole( 'button', { name: 'Template options' } );
+			.getByRole( 'button', { name: 'Template' } );
 		await templateOptionsButton.click();
 		// Empty theme has only one custom template with `postTypes: ['post']`,
 		// so it should not be suggested.
 		await expect(
 			page
-				.getByRole( 'menu', { name: 'Template options' } )
+				.getByRole( 'menu', { name: 'Template' } )
 				.getByText( 'Change template' )
 		).toHaveCount( 0 );
 	} );
